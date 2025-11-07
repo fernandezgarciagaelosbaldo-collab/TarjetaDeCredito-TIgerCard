@@ -17,6 +17,6 @@ Simula el funcionamiento de una tarjeta de crédito digital, con login, registro
 
 ## Integrantes
 - Gael Fernández – Programador principal
-- [Nombre 2] – Documentación técnica
-- [Nombre 3] – Diseño y estilos
-- [Nombre 4] – Diagramas y análisis
+- Alan Marquez – Documentación técnica
+- Alejandro Marquez – Diseño y estilos
+- Carlos – Diagramas y análisis
