@@ -1,0 +1,13 @@
+# Carpetas y archivos de compilación
+bin/
+obj/
+.vs/
+
+# Archivos personales de Visual Studio
+*.user
+*.suo
+
+# Archivos compilados
+*.exe
+*.dll
+*.pdb
