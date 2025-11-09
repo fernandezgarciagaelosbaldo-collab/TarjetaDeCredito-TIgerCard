@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TigerCard.Models.Usuario
 @{
+    ViewData["Title"] = "Perfil de Usuario";
 }
+
+<h2>Bienvenido, @Model.Nombre</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@foreach (var t in Model.Tarjetas)
+{
+    <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between">
+            <h5>Tarjeta • @t.Numero</h5>
+            <div>
+                <a asp-controller="Transaccion" asp-action="Create" class="btn btn-outline-secondary btn-sm">Registrar compra</a>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-4"><strong>Límite:</strong> @t.LimiteCredito.ToString("C")</div>
+            <div class="col-md-4"><strong>Saldo:</strong> @t.SaldoActual.ToString("C")</div>
+            <div class="col-md-4"><strong>Fecha corte:</strong> @t.FechaCorte.ToShortDateString()</div>
+        </div>
+
+        <hr />
+        <h6>Movimientos recientes</h6>
+        <table class="table table-sm">
+            <thead><tr><th>Tipo</th><th>Monto</th><th>Fecha</th><th>Categoria</th><th>Desc</th></tr></thead>
+            <tbody>
+                @foreach (var m in t.Transacciones.OrderByDescending(x => x.Fecha).Take(10))
+                {
+                    <tr>
+                        <td>@m.Tipo</td>
+                        <td>@m.Monto.ToString("C")</td>
+                        <td>@m.Fecha.ToString("g")</td>
+                        <td>@m.Categoria</td>
+                        <td>@m.Descripcion</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<form asp-action="Logout" asp-controller="Account" method="post">
+    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+</form>

@@ -16,7 +16,7 @@ Simula el funcionamiento de una tarjeta de crédito digital, con login, registro
 - Bootstrap / CSS personalizado
 
 ## Integrantes
-- Gael Fernández – Programador principal
-- Alan Marquez – Documentación técnica
-- Alejandro Marquez – Diseño y estilos
-- Carlos – Diagramas y análisis
+- Gael Osbaldo Fernández Garcia – Programador principal
+- Alan Rafael Marquez Hurtado– Documentación técnica
+- Yahir Alejandro Marquez – Diagrama de flujo
+- Carlos Andrés Jiménez Aguiñaga – Pseudocodigo

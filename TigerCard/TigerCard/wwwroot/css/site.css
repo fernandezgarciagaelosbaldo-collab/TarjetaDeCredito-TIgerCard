@@ -1,22 +1,171 @@
-html {
-  font-size: 14px;
+v /* site.css - TigerCard v2 (tema mejorado) */
+:root {
+    --tiger-red: #ff1f2e;
+    --tiger-dark: #0b0b0c;
+    --tiger-card: #141416;
+    --tiger-text: #e6e6e6;
+    --tiger-gray: #2a2b2d;
+    --tiger-hover: #ff4655;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* ========== Global ========== */
 body {
-  margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #080809 0%, #0d0d0f 100%);
+    color: var(--tiger-text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5 {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Enlaces */
+a {
+    color: var(--tiger-red);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    a:hover {
+        color: var(--tiger-hover);
+    }
+
+/* ========== Navbar ========== */
+.tiger-nav {
+    background: linear-gradient(90deg, #080809, #101012);
+    border-bottom: 1px solid rgba(255,31,46,0.15);
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.tiger-logo {
+    color: var(--tiger-red);
+    margin-right: .4rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+/* ========== Cards ========== */
+.card.tiger {
+    background: var(--tiger-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+    .card.tiger:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+
+/* ========== Buttons ========== */
+.btn-tiger {
+    background: linear-gradient(90deg, var(--tiger-red), #c70015);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 1.1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 8px rgba(255,31,46,0.4);
+    transition: all 0.2s ease;
+}
+
+    .btn-tiger:hover {
+        background: linear-gradient(90deg, #ff3243, #e0001c);
+        transform: scale(1.03);
+    }
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--tiger-text);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+    .btn-ghost:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.25);
+    }
+
+/* ========== Form controls ========== */
+.form-control {
+    background: #111113;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--tiger-text);
+    border-radius: 8px;
+    height: calc(2.2rem + .6rem);
+    padding: 0.5rem 0.8rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .form-control:focus {
+        border-color: var(--tiger-red);
+        box-shadow: 0 0 5px rgba(255,31,46,0.4);
+        outline: none;
+    }
+
+.form-label {
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* ========== Tabla ========== */
+.table {
+    color: var(--tiger-text);
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+    .table thead {
+        background: rgba(255,255,255,0.05);
+    }
+
+        .table thead th {
+            border-bottom: 1px solid rgba(255,31,46,0.1);
+            color: #f0f0f0;
+            font-weight: 600;
+            padding: 0.7rem;
+        }
+
+    .table tbody tr {
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+        .table tbody tr:hover {
+            background: rgba(255,31,46,0.05);
+        }
+
+    .table td {
+        padding: 0.7rem;
+    }
+
+/* ========== Alerts ========== */
+.text-danger {
+    color: #ff6b6b;
+}
+
+/* ========== Helpers ========== */
+.mt-2 {
+    margin-top: .5rem;
+}
+
+.mb-2 {
+    margin-bottom: .5rem;
+}
+
+.text-center {
+    text-align: center;
 }

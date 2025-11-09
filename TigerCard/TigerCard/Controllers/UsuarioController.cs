@@ -1,83 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TigerCard.Data;
 
 namespace TigerCard.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: UsuarioController
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private readonly ApplicationDbContext _db;
+        public UsuarioController(ApplicationDbContext db) { _db = db; }
 
-        // GET: UsuarioController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            var idStr = HttpContext.Session.GetString("UsuarioId");
+            if (string.IsNullOrEmpty(idStr)) return RedirectToAction("Login", "Account");
 
-        // GET: UsuarioController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+            int id = int.Parse(idStr);
+            var usuario = await _db.Usuarios
+                .Include(u => u.Tarjetas)
+                    .ThenInclude(t => t.Transacciones)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
-        // POST: UsuarioController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            if (usuario == null) return RedirectToAction("Login", "Account");
 
-        // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(usuario);
         }
     }
 }
